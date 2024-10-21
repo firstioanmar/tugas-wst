@@ -1,6 +1,19 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const Navbar = () => {
+  const navigate = useNavigate(); // Initialize useNavigate
+
+  const handleLogout = () => {
+    // Clear user session (if applicable)
+    console.log('Logging out...');
+
+    localStorage.clear()
+    
+    // Redirect to the login page
+    navigate('/login');
+  };
+
   return (
     <aside className="bg-gray-800 w-64 h-full shadow-lg text-white p-4">
       <nav>
@@ -10,6 +23,14 @@ const Navbar = () => {
           </li>
           <li>
             <a href="/profile" className="hover:bg-gray-700 block p-2 rounded">Profile</a>
+          </li>
+          <li>
+            <button 
+              onClick={handleLogout} 
+              className="hover:bg-gray-700 block p-2 rounded text-left w-full"
+            >
+              Logout
+            </button>
           </li>
         </ul>
       </nav>
